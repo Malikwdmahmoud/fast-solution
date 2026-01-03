@@ -1,0 +1,957 @@
+/* =====================================================
+   FAST-SOL | INDEX ONLY (Login Page)
+   Dark Blue • Glass • Floating • Glow
+   ===================================================== */
+
+/* ---------- Base ---------- */
+body{
+  background:
+    radial-gradient(1200px 700px at 20% 10%, rgba(30,123,255,.22), transparent 55%),
+    radial-gradient(900px 600px at 80% 30%, rgba(74,163,255,.18), transparent 55%),
+    linear-gradient(180deg, #050816 0%, #040713 100%);
+  color:#eaf1ff;
+  overflow:hidden;
+}
+
+/* Glow background */
+.bg-glow{
+  position: fixed;
+  inset:-30%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(30,123,255,.25), transparent 55%),
+    radial-gradient(circle at 70% 40%, rgba(74,163,255,.18), transparent 60%);
+  filter: blur(45px);
+  pointer-events:none;
+  z-index:-1;
+}
+
+/* ---------- Layout ---------- */
+.auth-wrap{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+}
+
+.auth-grid{
+  width:min(1100px,100%);
+  display:grid;
+  grid-template-columns: 1.15fr .85fr;
+  border-radius:24px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,.10),
+    rgba(255,255,255,.03)
+  );
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow:
+    0 35px 90px rgba(0,0,0,.60),
+    inset 0 1px 0 rgba(255,255,255,.18);
+
+  backdrop-filter: blur(22px);
+  overflow:hidden;
+}
+
+@media (max-width: 900px){
+  .auth-grid{ grid-template-columns:1fr; }
+}
+
+/* ---------- Left (Forms) ---------- */
+.auth-left{
+  padding:28px 26px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.auth-card{
+  background: rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:20px;
+  padding:22px;
+}
+
+/* Tabs */
+.tabs{
+  display:flex;
+  gap:6px;
+  padding:6px;
+  background: rgba(255,255,255,.08);
+  border-radius:999px;
+}
+
+.tab-btn{
+  flex:1;
+  border:none;
+  background:transparent;
+  color:rgba(234,241,255,.65);
+  font-weight:900;
+  padding:10px 0;
+  border-radius:999px;
+  cursor:pointer;
+}
+
+.tab-btn.active{
+  background: linear-gradient(135deg,#1e7bff,#4aa3ff);
+  color:#fff;
+  box-shadow: 0 8px 22px rgba(30,123,255,.45);
+}
+
+/* Forms */
+.form-label{
+  font-size:13px;
+  font-weight:700;
+  color:rgba(234,241,255,.9);
+}
+
+.form-control{
+  background: rgba(255,255,255,.06) !important;
+  border:1px solid rgba(255,255,255,.18) !important;
+  border-radius:14px;
+  color:#fff !important;
+}
+
+.form-control::placeholder{
+  color:rgba(234,241,255,.45);
+}
+
+.form-control:focus{
+  border-color:#4aa3ff !important;
+  box-shadow: 0 0 0 4px rgba(30,123,255,.18);
+}
+
+/* Buttons */
+.btn.primary{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:14px;
+  font-weight:900;
+  color:#fff;
+  background: linear-gradient(135deg,#1e7bff,#4aa3ff);
+  box-shadow:
+    0 12px 32px rgba(30,123,255,.45),
+    inset 0 1px 0 rgba(255,255,255,.35);
+}
+
+.btn.primary:hover{
+  transform: translateY(-1px);
+  box-shadow:
+    0 18px 44px rgba(30,123,255,.60);
+}
+
+/* ---------- Right (Visual) ---------- */
+.auth-right{
+  position:relative;
+  padding:22px;
+  background:
+    radial-gradient(500px 400px at 20% 20%, rgba(30,123,255,.35), transparent 60%),
+    radial-gradient(400px 300px at 80% 40%, rgba(74,163,255,.25), transparent 60%),
+    linear-gradient(180deg, rgba(8,20,45,.90), rgba(4,10,25,.96));
+}
+
+/* Hero */
+.hero-img{
+  position:relative;
+  height:100%;
+  min-height:420px;
+  border-radius:18px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.20);
+  background:
+    linear-gradient(120deg, rgba(30,123,255,.22), rgba(255,255,255,.05)),
+    radial-gradient(600px 320px at 20% 20%, rgba(74,163,255,.20), transparent 55%),
+    radial-gradient(650px 360px at 80% 40%, rgba(30,123,255,.18), transparent 58%);
+}
+
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  background: linear-gradient(
+    180deg,
+    rgba(5,8,22,.25),
+    rgba(5,8,22,.80)
+  );
+}
+
+/* Floating cards */
+.floating{
+  position:absolute;
+  z-index:5;
+  width:260px;
+  display:flex;
+  gap:10px;
+  padding:12px;
+  border-radius:16px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,.14),
+    rgba(255,255,255,.05)
+  );
+  border:1px solid rgba(255,255,255,.25);
+  box-shadow:
+    0 12px 30px rgba(0,0,0,.45),
+    inset 0 1px 0 rgba(255,255,255,.25);
+
+  backdrop-filter: blur(14px);
+}
+
+.floating strong{
+  font-size:14px;
+  font-weight:900;
+}
+.floating p{
+  font-size:12px;
+  opacity:.85;
+}
+
+.icon{
+  width:34px;
+  height:34px;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: rgba(30,123,255,.22);
+}
+
+/* Positions */
+.floating--1{ top:24px; right:24px; }
+.floating--2{ top:120px; left:24px; }
+.floating--3{ bottom:120px; right:24px; }
+.floating--4{ bottom:24px; left:24px; }
+
+/* Floating animation */
+@keyframes float{
+  0%,100%{ transform: translateY(0); }
+  50%{ transform: translateY(-8px); }
+}
+
+.floating--1{ animation: float 6s ease-in-out infinite; }
+.floating--2{ animation: float 7s ease-in-out infinite; }
+.floating--3{ animation: float 6.5s ease-in-out infinite; }
+.floating--4{ animation: float 7.5s ease-in-out infinite; }
+
+/* Banner text */
+.auth-banner-content{
+  position:absolute;
+  left:22px;
+  right:22px;
+  bottom:6px;
+  z-index:2;
+
+  padding:12px 14px;
+  border-radius:14px;
+  background: rgba(7,12,28,.55);
+  border:1px solid rgba(255,255,255,.18);
+  backdrop-filter: blur(12px);
+}
+
+.auth-banner-content h2{
+  font-size:18px;
+  font-weight:800;
+  margin:0 0 4px;
+}
+
+.auth-banner-content p{
+  font-size:13px;
+  margin:0;
+  opacity:.85;
+}
+/* =========================================================
+   Fast-Sol — Dark Blue Glassmorphism (Full main.css)
+   Works best with:
+   - <div class="bg-glow"></div> right after <body>
+   - Right side hero: .hero-img + .floating cards
+   ========================================================= */
+
+/* ------------------------------
+   Tokens
+--------------------------------*/
+:root{
+  --bg:#050816;
+  --bg2:#040713;
+
+  --card: rgba(255,255,255,.06);
+  --card2: rgba(255,255,255,.04);
+  --stroke: rgba(255,255,255,.12);
+
+  --text:#eaf1ff;
+  --muted: rgba(234,241,255,.72);
+
+  --blue:#1e7bff;
+  --blue2:#4aa3ff;
+
+  --shadow: 0 18px 50px rgba(0,0,0,.45);
+  --shadow2: 0 12px 28px rgba(0,0,0,.35);
+
+  --radius:16px;
+  --radius2:12px;
+}
+
+/* ------------------------------
+   Base
+--------------------------------*/
+*{ box-sizing:border-box; }
+html, body{ height:100%; }
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Tahoma, Arial;
+  color: var(--text);
+  background:
+    radial-gradient(1200px 700px at 20% 10%, rgba(30,123,255,.20), transparent 55%),
+    radial-gradient(900px 600px at 80% 30%, rgba(74,163,255,.16), transparent 55%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+}
+
+a{ color: inherit; text-decoration: none; }
+a:hover{ color: rgba(234,241,255,.96); }
+hr{ border-color: rgba(255,255,255,.12); opacity:1; }
+.text-muted{ color: var(--muted) !important; }
+
+::selection{
+  background: rgba(30,123,255,.25);
+}
+
+/* Optional glow layer */
+.bg-glow{
+  position: fixed;
+  inset: -30%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(30,123,255,.20), transparent 55%),
+    radial-gradient(circle at 70% 40%, rgba(74,163,255,.14), transparent 60%);
+  filter: blur(40px);
+  pointer-events:none;
+  z-index:-1;
+}
+
+/* ------------------------------
+   Containers helpers
+--------------------------------*/
+.container-max{
+  width: min(1100px, calc(100% - 24px));
+  margin: 0 auto;
+}
+
+/* ------------------------------
+   Global glass surfaces
+--------------------------------*/
+.soft-card,
+.service-card, .service-mini, .package-card, .type-card, .product-card, .work-card,
+.info-line, .mini-box, .welcome-bar{
+  background: var(--card);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+  padding-left: 0px;
+}
+
+.soft-alert{
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(7,12,28,.55);
+  border-radius: var(--radius2);
+  backdrop-filter: blur(12px);
+  padding-left: 20px;
+}
+
+/* ------------------------------
+   Header / Footer
+--------------------------------*/
+.site-header{
+  position: sticky;
+  top:0;
+  z-index:50;
+  background: rgba(255,255,255,.04);
+  border-bottom: 1px solid var(--stroke);
+  backdrop-filter: blur(16px);
+}
+
+.site-footer{
+  background: rgba(255,255,255,.03);
+  border-top: 1px solid var(--stroke);
+  backdrop-filter: blur(16px);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.brand img{
+  width:44px; height:44px;
+  object-fit:contain;
+  border-radius: 12px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid var(--stroke);
+  padding:6px;
+}
+.brand .title{
+  margin:0;
+  font-weight: 900;
+  letter-spacing:.2px;
+}
+.brand .sub{
+  margin:4px 0 0 0;
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.footer-title{ font-weight: 900; margin-bottom:.5rem; }
+.footer-link{
+  display:block;
+  color: rgba(234,241,255,.72);
+  font-weight: 700;
+  font-size: 13px;
+  margin: .35rem 0;
+}
+.footer-link:hover{ color: rgba(234,241,255,.92); }
+
+/* ------------------------------
+   Nav Pills (Top bar)
+--------------------------------*/
+.nav-pills .nav-link{
+  border-radius: 999px;
+  border: 1px solid var(--stroke);
+  background: rgba(255,255,255,.06);
+  color: rgba(234,241,255,.86);
+  font-weight: 800;
+  padding: .55rem .95rem;
+  transition: transform .12s ease, background .12s ease, box-shadow .12s ease;
+}
+.nav-pills .nav-link:hover{
+  background: rgba(255,255,255,.09);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow2);
+}
+.nav-pills .nav-link.active{
+  background: linear-gradient(135deg, rgba(30,123,255,.30), rgba(74,163,255,.18));
+  border-color: rgba(30,123,255,.55);
+  color: rgba(234,241,255,.95);
+}
+
+/* ------------------------------
+   Buttons (Bootstrap-friendly)
+--------------------------------*/
+.btn{
+  border-radius: 14px !important;
+  font-weight: 800 !important;
+  letter-spacing:.2px;
+}
+
+.btn-primary{
+  border: 1px solid transparent !important;
+  background: linear-gradient(135deg, var(--blue), var(--blue2)) !important;
+  color:#fff !important;
+}
+.btn-primary:hover{
+  filter: saturate(1.06);
+  transform: translateY(-1px);
+}
+
+.btn-outline-primary{
+  background: transparent !important;
+  border-color: rgba(30,123,255,.55) !important;
+  color: rgba(234,241,255,.95) !important;
+}
+.btn-outline-primary:hover{
+  background: rgba(255,255,255,.06) !important;
+}
+
+.btn-secondary{
+  background: rgba(255,255,255,.07) !important;
+  border-color: rgba(255,255,255,.14) !important;
+  color: rgba(234,241,255,.95) !important;
+}
+.btn-secondary:hover{
+  background: rgba(255,255,255,.09) !important;
+}
+
+/* Small link button style (optional) */
+.link{
+  border: none;
+  background: transparent;
+  color: rgba(234,241,255,.78);
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+}
+.link:hover{ color: rgba(234,241,255,.95); }
+
+/* ------------------------------
+   Forms
+--------------------------------*/
+.form-label{
+  font-size: 13px;
+  color: rgba(234,241,255,.88);
+  font-weight: 700;
+}
+
+.form-control, .form-select{
+  width:100%;
+  padding: 12px 12px;
+  border-radius: 14px !important;
+  border: 1px solid rgba(255,255,255,.14) !important;
+  background: rgba(255,255,255,.06) !important;
+  color: var(--text) !important;
+  outline: none;
+}
+.form-control::placeholder{ color: rgba(234,241,255,.45) !important; }
+.form-control:focus, .form-select:focus{
+  border-color: rgba(30,123,255,.55) !important;
+  box-shadow: 0 0 0 4px rgba(30,123,255,.15) !important;
+}
+
+/* ------------------------------
+   Auth Layout (Login page)
+--------------------------------*/
+.auth-wrap{
+  min-height: 100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 28px 16px;
+}
+
+/* If you still use .auth-grid */
+.auth-grid{
+  width:min(1100px, 100%);
+  display:grid;
+  grid-template-columns: 1.2fr .9fr;
+  background: var(--card);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow:hidden;
+  backdrop-filter: blur(16px);
+}
+
+@media (max-width:900px){
+  .auth-grid{ grid-template-columns: 1fr; }
+  .auth-right{ border-left:none !important; border-top: 1px solid var(--stroke); }
+}
+
+/* Left side (form) */
+.auth-left{
+  padding: 26px 22px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap: 14px;
+  background: rgba(255,255,255,.03);
+}
+
+.auth-card{
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: var(--radius2);
+  padding: 18px;
+  padding-left: 30px;
+}
+
+/* Right side (visual) */
+.auth-right{
+  position: relative;
+  padding: 20px;
+  background:
+    radial-gradient(600px 300px at 30% 0%, rgba(30,123,255,.22), transparent 65%),
+    radial-gradient(500px 300px at 90% 30%, rgba(74,163,255,.16), transparent 60%);
+  border-left: 1px solid var(--stroke);
+  display:flex;
+  flex-direction:column;
+  gap: 14px;
+}
+
+/* Hero image container */
+.hero-img{
+  position: relative;
+  width:100%;
+  min-height: 420px;
+  border-radius: var(--radius2);
+  overflow:hidden;
+  border: 1px solid var(--stroke);
+  background:
+    linear-gradient(120deg, rgba(30,123,255,.22), rgba(255,255,255,.05)),
+    radial-gradient(600px 320px at 20% 20%, rgba(74,163,255,.18), transparent 55%),
+    radial-gradient(650px 360px at 80% 40%, rgba(30,123,255,.16), transparent 58%);
+  background-size: cover;
+  background-position: center;
+}
+
+/* If you use <img> inside hero */
+.hero-img img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:.85;
+}
+
+.hero-overlay{
+  position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(5,8,22,.20), rgba(5,8,22,.74));
+}
+
+/* Banner content bottom */
+.auth-banner-content{
+  position:absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 18px;
+  z-index: 3;
+  padding: 14px 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(7,12,28,.50);
+  backdrop-filter: blur(10px);
+}
+
+/* Floating cards */
+.floating{
+  position:absolute;
+  z-index: 3;
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  padding: 12px 14px;
+  width: min(300px, 85%);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(7,12,28,.55);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 12px 28px rgba(0,0,0,.35);
+}
+.floating strong{ font-size: 14px; }
+.floating p{ margin:2px 0 0 0; font-size:13px; color: rgba(234,241,255,.78); }
+
+.icon{
+  width:38px;height:38px;
+  display:grid; place-items:center;
+  border-radius: 12px;
+  background: rgba(30,123,255,.18);
+  border: 1px solid rgba(30,123,255,.25);
+  color: rgba(234,241,255,.95);
+  flex: 0 0 auto;
+}
+
+.floating--1{ top:16px; right:16px; }
+.floating--2{ top:92px; left:16px; }
+.floating--3{ bottom:92px; right:16px; }
+.floating--4{ bottom:16px; left:16px; }
+
+/* Floating subtle motion (optional) */
+@media (prefers-reduced-motion: no-preference){
+  .floating--1{ animation: float1 6s ease-in-out infinite; }
+  .floating--2{ animation: float2 7s ease-in-out infinite; }
+  .floating--3{ animation: float3 6.5s ease-in-out infinite; }
+  .floating--4{ animation: float4 7.2s ease-in-out infinite; }
+}
+@keyframes float1{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-6px);} }
+@keyframes float2{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-7px);} }
+@keyframes float3{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-6px);} }
+@keyframes float4{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-7px);} }
+
+/* Tabs (if you use custom tabs) */
+.tabs{
+  display:flex;
+  gap: 6px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.12);
+  padding: 6px;
+  border-radius: 16px;
+}
+.tab-btn{
+  flex:1;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 8px;
+  font-weight: 800;
+  background: transparent;
+  color: rgba(234,241,255,.82);
+  cursor:pointer;
+}
+.tab-btn.active{
+  background: linear-gradient(135deg, rgba(30,123,255,.26), rgba(74,163,255,.16));
+  border: 1px solid rgba(30,123,255,.40);
+  color: rgba(234,241,255,.95);
+}
+.tab-panel{ display:none; }
+.tab-panel.active{ display:block; }
+
+/* Chips */
+.chips{ display:flex; flex-wrap:wrap; gap:8px; }
+.chip{
+  font-size:12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--stroke);
+  background: rgba(255,255,255,.06);
+  color: rgba(234,241,255,.86);
+}
+
+/* Multi-select chip checks */
+.chip-check{
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  color: rgba(234,241,255,.86);
+  font-weight: 700;
+  cursor:pointer;
+}
+.chip-check input{
+  width:16px; height:16px;
+  accent-color: var(--blue);
+}
+
+/* Divider */
+.divider{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  color: rgba(234,241,255,.55);
+  font-size: 12px;
+}
+.divider::before,.divider::after{
+  content:"";
+  height:1px;
+  flex:1;
+  background: rgba(255,255,255,.12);
+}
+
+/* ------------------------------
+   Home Hero (if used)
+--------------------------------*/
+.home-hero-img{
+  position: relative;
+  height: 320px;
+  border-radius: var(--radius);
+  overflow:hidden;
+  border: 1px solid var(--stroke);
+  background:
+    linear-gradient(120deg, rgba(30,123,255,.22), rgba(255,255,255,.05)),
+    radial-gradient(600px 320px at 20% 20%, rgba(74,163,255,.18), transparent 55%),
+    radial-gradient(650px 360px at 80% 40%, rgba(30,123,255,.16), transparent 58%);
+}
+.home-hero-overlay{
+  position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(5,8,22,.25), rgba(5,8,22,.72));
+}
+.pill-dark{
+  display:inline-flex;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 12px;
+  color: #fff;
+  background: rgba(0,0,0,.35);
+  border: 1px solid rgba(255,255,255,.18);
+}
+.counter-num{ font-weight: 900; font-size: 30px; color: rgba(234,241,255,.95); }
+.counter-label{ color: rgba(234,241,255,.62); font-weight: 700; font-size: 13px; }
+
+/* ------------------------------
+   Cards in other pages
+--------------------------------*/
+.service-card, .service-mini, .package-card, .type-card, .product-card, .work-card{
+  transition: transform .12s ease, background .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+.service-card:hover, .service-mini:hover, .product-card:hover, .work-card:hover{
+  transform: translateY(-2px);
+  background: rgba(255,255,255,.07);
+  border-color: rgba(30,123,255,.32);
+  box-shadow: var(--shadow2);
+}
+
+.service-desc, .product-desc, .work-sub, .work-desc{
+  color: rgba(234,241,255,.72);
+}
+
+.logo-tile{
+  height: 70px;
+  border:1px dashed rgba(30,123,255,.32);
+  border-radius: 16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: rgba(255,255,255,.04);
+  font-weight: 900;
+  color: rgba(234,241,255,.72);
+}
+
+/* Contact info line */
+.info-line{
+  display:flex;
+  align-items:flex-start;
+  gap:.75rem;
+  padding:.85rem 1rem;
+}
+.info-ic{
+  width:36px; height:36px;
+  border-radius: 14px;
+  display:flex; align-items:center; justify-content:center;
+  background: rgba(30,123,255,.14);
+  border: 1px solid rgba(30,123,255,.22);
+  color: rgba(234,241,255,.95);
+  font-weight: 900;
+}
+.social-pill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:.55rem .85rem;
+  border-radius: 999px;
+  border:1px solid rgba(30,123,255,.22);
+  background: rgba(30,123,255,.10);
+  color: rgba(234,241,255,.92);
+  font-weight: 900;
+}
+.social-pill:hover{
+  background: rgba(30,123,255,.14);
+}
+
+/* ------------------------------
+   Responsive tweaks
+--------------------------------*/
+@media (max-width: 576px){
+  .auth-left{ padding: 18px 14px; }
+  .auth-right{ padding: 14px; }
+  .floating{ width: min(240px, 86%); }
+}
+.auth-grid{
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,.10),
+    rgba(255,255,255,.03)
+  );
+  border: 1px solid rgba(255,255,255,.18);
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.55),
+    inset 0 1px 0 rgba(255,255,255,.18);
+  backdrop-filter: blur(22px);
+}
+.auth-right{
+  background:
+    radial-gradient(500px 400px at 20% 20%, rgba(30,123,255,.35), transparent 60%),
+    radial-gradient(400px 300px at 80% 40%, rgba(74,163,255,.25), transparent 60%),
+    linear-gradient(180deg, rgba(8,20,45,.85), rgba(4,10,25,.95));
+}
+.floating{
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,.14),
+    rgba(255,255,255,.05)
+  );
+  border: 1px solid rgba(255,255,255,.25);
+  box-shadow:
+    0 12px 30px rgba(0,0,0,.45),
+    inset 0 1px 0 rgba(255,255,255,.25);
+  backdrop-filter: blur(14px);
+}
+
+.floating strong{
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.floating p{
+  font-size: 12px;
+  opacity: .85;
+}
+.floating--1{ top:22px; right:22px; }
+.floating--2{ top:110px; left:22px; }
+.floating--3{ bottom:110px; right:22px; }
+.floating--4{ bottom:22px; left:22px; }
+.tabs{
+  background: rgba(255,255,255,.08);
+  border-radius: 999px;
+  padding: 6px;
+}
+
+.tab-btn{
+  border-radius: 999px;
+  font-weight: 900;
+  color: rgba(234,241,255,.65);
+}
+
+.tab-btn.active{
+  background: linear-gradient(
+    135deg,
+    rgba(30,123,255,.9),
+    rgba(74,163,255,.85)
+  );
+  color: #fff;
+  box-shadow:
+    0 8px 22px rgba(30,123,255,.45);
+}
+.btn.primary{
+  background: linear-gradient(
+    135deg,
+    #1e7bff,
+    #4aa3ff
+  );
+  box-shadow:
+    0 10px 30px rgba(30,123,255,.45),
+    inset 0 1px 0 rgba(255,255,255,.35);
+  border-radius: 14px;
+}
+
+.btn.primary:hover{
+  transform: translateY(-1px);
+  box-shadow:
+    0 16px 40px rgba(30,123,255,.55);
+}
+.auth-banner-content{
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 20px;            /* ↓ نزلناه لتحت */
+  z-index: 2;              /* ↓ تحت الـ floating */
+  
+  padding: 14px 16px;
+  border-radius: 16px;
+
+  background: rgba(7,12,28,.55);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,.18);
+}
+.auth-banner-content h2{
+  margin: 0 0 4px 0;
+  font-size: 20px;       /* كان كبير زيادة */
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.auth-banner-content p{
+  margin: 0;
+  font-size: 13px;
+  opacity: .85;
+}
+.floating{
+  z-index: 5;   /* أعلى من النص */
+}
+.auth-banner-content{
+  bottom: -33px;   /* كانت 20px ← نزلناها أكثر */
+    z-index: 10000;     /* تحت الـ floating */  
+}
+
+.welcometext{
+  font-size: 24px;   /* كان كبير زيادة */
+  font-weight: 800;
+  margin: 6 6 6px 6;
+  line-height: 1.2;
+  padding: auto;
+  left: auto;
+}
+
+#welcomeText {
+  padding-left: 100px;
+}
